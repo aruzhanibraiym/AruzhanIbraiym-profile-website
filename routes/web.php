@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Client;
 use App\Models\Post;
 
+
+use App\Http\Controllers\ClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,10 +40,7 @@ Route::get('client/add', function (){
     ]);
 });
 
-Route::get('client', function () {
-    $client = Client::find(1);
-    return $client;
-});
+Route::get('client', [ClientController::class, 'index']);
 
 Route::get('post/add', function () {
     DB::table('posts')->insert([
@@ -53,3 +53,4 @@ Route::get('post', function () {
     $post = Post::find(1);
     return $post;
 });
+

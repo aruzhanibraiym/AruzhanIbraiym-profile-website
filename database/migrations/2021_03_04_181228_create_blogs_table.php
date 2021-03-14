@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CratePostsTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CratePostsTable extends Migration
      */
     public function up()
     {
-            Schema::create('posts', function (Blueprint $table){
-                $table->id();
-                $table->string('title');
-                $table->string('body');
-                $table->timestamps();
-            });
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('surname');
+            $table->integer('age');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,6 +29,6 @@ class CratePostsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('blogs');
     }
 }

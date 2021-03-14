@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Client;
 use App\Models\Post;
+use App\Models\Blog;
 
 
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,8 @@ Route::get('client/create', function() {
 
 Route::post('client/create', [ClientController::class, 'store'])->name('add-client');
 
+Route::get('client/{id}', [ClientController::class, 'get_client']);
+
 
 Route::get('post/add', function () {
     DB::table('posts')->insert([
@@ -57,8 +61,27 @@ Route::get('post/add', function () {
     ]);
 });
 
-Route::get('post', function () {
-    $post = Post::find(1);
-    return $post;
+Route::get('post', [PostController::class, 'index']);
+Route::get('post/create', function() {
+    return view('post.create');
+ 
 });
+
+
+
+
+
+Route::get('blog/add', function (){
+    DB::table('blogs')->insert([
+        'description' => 'People of every description were there',
+        'category_id' => '101',
+        'price' => '100000'
+    ]);
+});
+
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/create', function() {
+    return view('blog.create');
+});
+
 

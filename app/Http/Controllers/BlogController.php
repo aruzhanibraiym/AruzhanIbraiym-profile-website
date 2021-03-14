@@ -20,6 +20,16 @@ class BlogController extends Controller
             'category_id' => $request->category_id,
             'price' => $request->price
        ]);
+      
        return back();
-        }
+    }
+
+    public function get_blog($id){
+        $blog = Blog::find($id);
+
+        if ($blog == null)
+            return response( 404);
+ 
+        return view('blog.detail')->with(['blog' => $blog]);   
+    }
 }

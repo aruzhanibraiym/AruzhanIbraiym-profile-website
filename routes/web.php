@@ -56,8 +56,9 @@ Route::get('client/{id}', [ClientController::class, 'get_client']);
 
 Route::get('post/add', function () {
     DB::table('posts')->insert([
-        'title' => 'Selecting the database',
-        'body' => 'Create a migration named Arwshka'
+        'title' => 'Selecting',
+        'body' => 'Create a migration named Arwshka',
+        'name' => 'Aruzhan'
     ]);
 });
 
@@ -67,8 +68,9 @@ Route::get('post/create', function() {
  
 });
 
+Route::post('post/create', [PostController::class, 'store'])->name('add-post');
 
-
+Route::get('post/{id}', [PostController::class, 'get_post']);
 
 
 Route::get('blog/add', function (){

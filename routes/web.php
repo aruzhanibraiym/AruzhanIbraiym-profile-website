@@ -6,13 +6,15 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Client;
 use App\Models\Post;
 use App\Models\Blog;
+use App\Models\Form;
 
 
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BlogController;
-
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,4 +91,19 @@ Route::get('blog/create', function() {
 Route::post('blog/create', [BlogController::class, 'store'])->name('add-blog');
 
 Route::get('blog/{id}', [BlogController::class, 'get_blog']);
+
+Route::get('form/add', function() {
+    DB::table('forms')->insert ([
+        'name' => 'Aruzhan',
+        'surname' => 'Ibraiym',
+        'email' => 'arukajd01@gmail.com',
+        'image' => ' '
+    ]);
+});
+Route::get('form', [FormController::class, 'index']);
+Route::get('form/create', function() {
+    return view('form.create');
+});
+
+Route::post('form/create', [FormController::class, 'store'])->name('form/create');
 

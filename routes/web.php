@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Post;
 use App\Models\Blog;
 use App\Models\Form;
+use App\Models\Mail;
 
 
 
@@ -15,6 +16,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -106,4 +108,6 @@ Route::get('form/create', function() {
 });
 
 Route::post('form/create', [FormController::class, 'store'])->name('form/create');
+
+Route::get('mail/send', [MailController::class, 'send']);
 

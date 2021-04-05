@@ -1,0 +1,1 @@
+Mail::to("arukajd01@gmail.com")->send(new DemoEmail($objDemo));
